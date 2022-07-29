@@ -6,16 +6,21 @@ class Solution:
         >>> Solution().longestPalindrome("abccccdde")
         7
         """
+        
         count = 0
-        single_added = False
-        for each in set(s):
-            appears = s.count(each)
-            if(not single_added and appears%2==1):
-                count += appears
-                single_added = True
-            else:
-                count += s.count(each)-s.count(each)%2
-        return int(count)
+        chars = set()
+        for each in s:
+            if each not in chars:
+                chars.add(each)
+                continue
+            count += 2
+            chars.remove(each)
+        return count if not chars else count+1
+    
+        #-------------------------------------------
+        #TWO LINER SOL
+        o = sum([freq%2 for freq in collections.Counter(s).values()])
+        return len(s) if o <= 1 else len(s)-o+1
 
 if __name__ == "__main__":
     import doctest

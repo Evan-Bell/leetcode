@@ -5,10 +5,10 @@ def my_cache(func):
     memo = {}
     def wrapper(*args):
         if tuple(args) not in memo:
-            print(tuple(args))
             memo[tuple(args)] = func(*args)
         return memo[tuple(args)]
     return wrapper
+
 
 @my_cache
 def primes(n):
