@@ -21,7 +21,6 @@ class Solution:
                 image[x][y] = color
                 for r,c in get_neighbors(x,y, rows, cols):
                     queue.append((r,c))
-                    print(r,c)
                 seen.add((x,y))
         return image
             
