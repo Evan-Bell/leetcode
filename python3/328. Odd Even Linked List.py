@@ -6,6 +6,23 @@ class ListNode:
 class Solution:
     def oddEvenList(self, head: ListNode) -> ListNode:
         
+        
+    #FOUND SOL IN DISCUSS, WORKS WELL
+        if not head:
+            return head
+        
+        odd = head
+        evenHead = even = head.next
+        
+        while(even and even.next):
+            odd.next = odd.next.next
+            even.next = even.next.next
+            odd = odd.next
+            even = even.next
+        
+        odd.next = evenHead
+        return head
+        
         #--------------------------------------------------------------
         #SOLUTION WITH PYTH LISTS, NOT LINKEDLIST MODIFICATION
         odd = []
@@ -25,6 +42,9 @@ class Solution:
             head = ListNode(o, head)
         
         return head
+        
+        
+        
 
 
 if __name__ == "__main__":
