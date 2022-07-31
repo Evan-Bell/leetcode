@@ -14,16 +14,16 @@ class Solution:
         return Solution().inorderTraversal(root.left) + [root.val] + Solution().inorderTraversal(root.right)
         
         #NON-RECURSIVE SOL
-#         res = []
-#         queue = []
-#         while(queue or root):
-#             while(root):
-#                 queue.append(root)
-#                 root = root.left
-#             root = queue.pop()
-#             res.append(root.val)
-#             root = root.right
-#         return res
+        res = []
+        queue = []
+        while(queue or root):
+            while(root):
+                queue.append(root)
+                root = root.left
+            root = queue.pop()
+            res.append(root.val)
+            root = root.right
+        return res
 
 
 
