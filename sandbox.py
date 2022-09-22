@@ -33,7 +33,7 @@ def inc_fib(n):
     return a
 
 
-@my_cache
+@cache
 def rec_fib(n):
     if(n<=1):
         return n
@@ -45,8 +45,6 @@ def approx_pi(n):
     for i in range(n):
         res += 4/(2.0*i+1)*(-1)**i
     return res
-
-
 
 def bad_prime(n):
     res = []
@@ -68,20 +66,7 @@ def count_time(func):
         return (func.__name__, end-start, len(res))
     return wrapper
 
-for g in range(1,10):
-    print(count_time(primes)(10**g))
-    print(count_time(bad_prime)(10**g))
 
-
-
-
-
-
-
-
-@cache
-def sums(n):
-    return int(n*(n+1)/2)
 
 
 
@@ -98,3 +83,14 @@ def diff_equals_self(n):
     print(rat, rai)
     return None
 
+
+#APPROX FOR FIB SEQUENCE
+c = 1/(math.sqrt(5))
+c1, c2 = (1+math.sqrt(5))/2, (1-math.sqrt(5))/2
+
+miny = 100
+for i in range(1,1000):
+    approx = c*(c1**i) - c*(c2**i)
+    actual = rec_fib(i) 
+    miny = min(miny,(actual- approx)/actual)
+print(miny)
